@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanGrid Services - Precision-Cleaned. Professionally Managed.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0f0f0f;
+            --secondary-bg: #1a1a1a;
+            --accent-color: #2563eb;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border-color: #27272a;
+            --hover-bg: #262626;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Subtle Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: var(--primary-bg);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 200;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            letter-spacing: 0.025em;
+        }
+
+        .cta-button:hover {
+            background: var(--hover-bg);
+            border-color: var(--text-secondary);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+        }
+
+        .founders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .founder-card {
+            background: var(--primary-bg);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .founder-card:hover {
+            border-color: var(--text-muted);
+        }
+
+        .founder-name {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .founder-title {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .founder-card p:last-child {
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--primary-bg);
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--secondary-bg);
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            border-color: var(--text-muted);
+            background: var(--hover-bg);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--primary-bg);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            border-color: var(--text-muted);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--primary-bg);
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+        }
+
+        .testimonial-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: var(--secondary-bg);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--text-muted);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            color: var(--text-primary);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--secondary-bg);
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            text-align: center;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .contact-form {
+            background: var(--primary-bg);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            color: var(--text-primary);
+            font-weight: 300;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-secondary);
+        }
+
+        .submit-btn {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--hover-bg);
+            border-color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-bg);
+            padding: 4rem 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section {
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        .footer-section a,
+        .footer-section p {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 300;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            section {
+                padding: 4rem 2rem;
+            }
+            
+            .nav-container {
+                padding: 0 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .founders {
+                grid-template-columns: 1fr;
+            }
+            
+            section h2 {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Subtle animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">UrbanGrid Services</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-choose">Why Us</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>UrbanGrid Services</h1>
+            <p class="tagline">Precision-Cleaned. Professionally Managed.</p>
+            <p class="intro">UrbanGrid Solutions connects offices, clinics, and facilities with top-tier cleaning professionals through hassle-free scheduling and oversight.</p>
+            <a href="#contact" class="cta-button">Get a Quote</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Built on Trust. Powered by Grit.</h2>
+            <div class="founders">
+                <div class="founder-card fade-in">
+                    <h3 class="founder-name">Fernando Erazo</h3>
+                    <p class="founder-title">Co-Founder & Systems Strategist</p>
+                    <p>Fernando brings a data-driven mindset and operational efficiency to every client engagement, ensuring seamless coordination and optimal results through systematic approaches to cleaning management.</p>
+                </div>
+                <div class="founder-card fade-in">
+                    <h3 class="founder-name">Johnny Colina</h3>
+                    <p class="founder-title">Co-Founder & Field Operations Lead</p>
+                    <p>Johny ensures quality on the ground with deep experience in managing commercial cleaning crews and maintaining the highest standards across all facilities and service locations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>Office Cleaning</h3>
+                    <p>Professional daily maintenance for corporate environments and business facilities</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Medical Facility Cleaning</h3>
+                    <p>Specialized sanitation protocols for healthcare and clinical environments</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Gym Sanitation</h3>
+                    <p>Deep cleaning and disinfection services for fitness and wellness facilities</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Post-Construction Cleanup</h3>
+                    <p>Complete debris removal and final detailing for construction projects</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2>Why Choose UrbanGrid</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Verified & Insured Contractors</h3>
+                    <p>All cleaning professionals are thoroughly vetted, licensed, and fully insured. We maintain strict standards for background checks and professional certifications to ensure your complete peace of mind.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Custom Scheduling</h3>
+                    <p>Flexible scheduling options designed around your business operations. Whether you need daily, weekly, or specialized timing, we coordinate seamlessly with your facility requirements.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Real-Time Support</h3>
+                    <p>Direct communication channels and immediate response protocols. Our management team provides ongoing oversight and addresses any concerns with rapid resolution capabilities.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Strict Quality Checks</h3>
+                    <p>Regular inspections and comprehensive quality assessments ensure consistent, exceptional cleaning standards. We implement systematic review processes for continuous improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Client Testimonials</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"UrbanGrid transformed our office cleaning experience. Their systematic approach and consistent quality have exceeded our expectations. The coordination is seamless and professional."</p>
+                    <p class="testimonial-author">— Sarah Mitchell, Office Manager</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The attention to detail and reliable service make UrbanGrid our trusted partner for all cleaning coordination needs. Their understanding of medical facility requirements is exceptional."</p>
+                    <p class="testimonial-author">— Dr. James Rodriguez, Clinic Director</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"Exceptional service delivery and seamless coordination. They handle every aspect professionally, allowing us to focus entirely on our core business operations."</p>
+                    <p class="testimonial-author">— Mike Thompson, Facility Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> info@urbangridsolutions.com</p>
+                    <p><strong>Phone:</strong> (281) 555-0123</p>
+                    <p><strong>Service Areas:</strong> Houston, New Caney, Conroe, and surrounding areas</p>
+                    
+                    <h3 style="margin-top: 3rem;">Business Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                    <p>Saturday: 9:00 AM - 4:00 PM</p>
+                    <p>Emergency Services: 24/7</p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" name="service">
+                            <option>Office Cleaning</option>
+                            <option>Medical Facility Cleaning</option>
+                            <option>Gym Sanitation</option>
+                            <option>Post-Construction Cleanup</option>
+                            <option>Floor Care</option>
+                            <option>Custom Quote</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your cleaning needs..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>UrbanGrid Services</h4>
+                <p>Precision-Cleaned. Professionally Managed.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#">Office Cleaning</a>
+                <a href="#">Medical Facilities</a>
+                <a href="#">Floor Care</a>
+                <a href="#">Emergency Services</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Instagram">ig</a>
+                    <a href="#" title="Facebook">fb</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UrbanGrid Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
