@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanGrid Services - Precision-Cleaned. Professionally Managed.</title>
+    <title>TrueAlign Solutions - Comprehensive Facility Management</title>
     <style>
         * {
             margin: 0;
@@ -28,6 +28,26 @@
             color: var(--text-primary);
             line-height: 1.6;
             font-weight: 300;
+        }
+
+        /* Updated Logo Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: -0.025em;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-mark {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(45deg, var(--accent-color) 30%, #1e40af);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
 
         /* Subtle Grid Background */
@@ -63,14 +83,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 3rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.025em;
         }
 
         .nav-links {
@@ -162,14 +174,28 @@
             background: var(--secondary-bg);
             text-align: center;
         }
+        /* Updated Founders Image Styles */
+.founders-image {
+    margin: 3rem auto;
+    max-width: 800px;
+    height: 500px; /* Increased height */
+    border: 1px solid var(--border-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-bg);
+    overflow: hidden;
+}
 
-        .about h2 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 4rem;
-            color: var(--text-primary);
-            letter-spacing: -0.025em;
-        }
+.founders-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Preserves whole image */
+    object-position: center top; /* Aligns heads at top */
+}
+
+
 
         .founders {
             display: grid;
@@ -517,7 +543,13 @@
             font-size: 0.85rem;
             font-weight: 300;
         }
-
+        .logo-svg {
+            width: 45px;
+            height: 45px;
+            margin-right: 0.5rem;
+            
+        }
+       
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -548,6 +580,14 @@
             section h2 {
                 font-size: 2rem !important;
             }
+
+            .founders-image {
+                height: 300px;
+                margin: 2rem auto;
+
+            }
+            
+
         }
 
         /* Smooth Scrolling */
@@ -573,40 +613,46 @@
     
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">UrbanGrid Services</a>
+         <a href="#" class="logo">
+    <img src="Solutions.svg" alt="TA Solutions Logo" class="logo-svg">
+
+</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-choose">Why Us</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">Leadership</a></li>
+                <li><a href="#services">Solutions</a></li>
+                <li><a href="#why-choose">Our Edge</a></li>
+                <li><a href="#testimonials">Results</a></li>
+                <li><a href="#contact">Connect</a></li>
             </ul>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container">
-            <h1>UrbanGrid Services</h1>
-            <p class="tagline">Precision-Cleaned. Professionally Managed.</p>
-            <p class="intro">UrbanGrid Solutions connects offices, clinics, and facilities with top-tier cleaning professionals through hassle-free scheduling and oversight.</p>
-            <a href="#contact" class="cta-button">Get a Quote</a>
+            <h1>TrueAlign Solutions</h1>
+            <p class="tagline">Strategic Facility Management Solutions</p>
+            <p class="intro">Comprehensive maintenance and operational services for commercial facilities, combining technical expertise with systematic management.</p>
+            <a href="#contact" class="cta-button">Request Proposal</a>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
-            <h2>Built on Trust. Powered by Grit.</h2>
+            <h2>Executive Leadership</h2>
+             <div class="founders-image">
+    <img src="founders.png" alt="TrueAlign Solutions Founders" style="object-fit: contain; width: 100%; height: 100%;">
+</div>
             <div class="founders">
                 <div class="founder-card fade-in">
                     <h3 class="founder-name">Fernando Erazo</h3>
-                    <p class="founder-title">Co-Founder & Systems Strategist</p>
-                    <p>Fernando brings a data-driven mindset and operational efficiency to every client engagement, ensuring seamless coordination and optimal results through systematic approaches to cleaning management.</p>
+                    <p class="founder-title">Co-Founder & Systems Architect</p>
+                    <p>Leading the development of integrated service platforms and operational frameworks for complex facility environments.</p>
                 </div>
                 <div class="founder-card fade-in">
                     <h3 class="founder-name">Johnny Colina</h3>
-                    <p class="founder-title">Co-Founder & Field Operations Lead</p>
-                    <p>Johny ensures quality on the ground with deep experience in managing commercial cleaning crews and maintaining the highest standards across all facilities and service locations.</p>
+                    <p class="founder-title">Co-Founder & Field Operations Director</p>
+                    <p>Overseeing cross-disciplinary service teams and implementing quality assurance protocols for complex facility environments.</p>
                 </div>
             </div>
         </div>
@@ -614,48 +660,55 @@
 
     <section id="services" class="services">
         <div class="container">
-            <h2>Our Services</h2>
+            <h2>Integrated Solutions</h2>
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <h3>Office Cleaning</h3>
-                    <p>Professional daily maintenance for corporate environments and business facilities</p>
+                    <h3>Industrial Cleaning</h3>
+                    <p>Specialized maintenance for manufacturing plants and warehouses</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Medical Facility Cleaning</h3>
-                    <p>Specialized sanitation protocols for healthcare and clinical environments</p>
+                    <h3>Pressure Washing</h3>
+                    <p>High-pressure surface cleaning for exteriors and equipment</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Gym Sanitation</h3>
-                    <p>Deep cleaning and disinfection services for fitness and wellness facilities</p>
+                    <h3>HVAC Maintenance</h3>
+                    <p>Ventilation system servicing and air quality management</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Post-Construction Cleanup</h3>
-                    <p>Complete debris removal and final detailing for construction projects</p>
+                    <h3>Floor Care Systems</h3>
+                    <p>Advanced surface treatments and protective coatings</p>
                 </div>
-
+                <div class="service-card fade-in">
+                    <h3>Construction Cleanup</h3>
+                    <p>Post-project site remediation and safety preparation</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Landscape Management</h3>
+                    <p>Commercial grounds maintenance and seasonal care</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="why-choose" class="why-choose">
         <div class="container">
-            <h2>Why Choose UrbanGrid</h2>
+            <h2>Operational Advantages</h2>
             <div class="features-grid">
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Verified & Insured Contractors</h3>
-                    <p>All cleaning professionals are thoroughly vetted, licensed, and fully insured. We maintain strict standards for background checks and professional certifications to ensure your complete peace of mind.</p>
+                    <h3 class="feature-title">Cross-Service Integration</h3>
+                    <p>Unified management platform coordinating multiple service lines through centralized oversight.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Custom Scheduling</h3>
-                    <p>Flexible scheduling options designed around your business operations. Whether you need daily, weekly, or specialized timing, we coordinate seamlessly with your facility requirements.</p>
+                    <h3 class="feature-title">Preventive Maintenance</h3>
+                    <p>Data-driven scheduling to prevent equipment failure and maintain operational continuity.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Real-Time Support</h3>
-                    <p>Direct communication channels and immediate response protocols. Our management team provides ongoing oversight and addresses any concerns with rapid resolution capabilities.</p>
+                    <h3 class="feature-title">Compliance Assurance</h3>
+                    <p>Full regulatory compliance tracking for industry-specific maintenance requirements.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Strict Quality Checks</h3>
-                    <p>Regular inspections and comprehensive quality assessments ensure consistent, exceptional cleaning standards. We implement systematic review processes for continuous improvement.</p>
+                    <h3 class="feature-title">24/7 Monitoring</h3>
+                    <p>Real-time operational tracking with automated alert systems for immediate response.</p>
                 </div>
             </div>
         </div>
@@ -663,19 +716,15 @@
 
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2>Client Testimonials</h2>
+            <h2>Client Outcomes</h2>
             <div class="testimonial-carousel">
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"UrbanGrid transformed our office cleaning experience. Their systematic approach and consistent quality have exceeded our expectations. The coordination is seamless and professional."</p>
-                    <p class="testimonial-author">— Sarah Mitchell, Office Manager</p>
+                    <p class="testimonial-text">"TrueAlign's integrated approach reduced our facility maintenance costs by 40% while improving service quality across all locations."</p>
+                    <p class="testimonial-author">— Operations Director, Manufacturing Group</p>
                 </div>
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"The attention to detail and reliable service make UrbanGrid our trusted partner for all cleaning coordination needs. Their understanding of medical facility requirements is exceptional."</p>
-                    <p class="testimonial-author">— Dr. James Rodriguez, Clinic Director</p>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Exceptional service delivery and seamless coordination. They handle every aspect professionally, allowing us to focus entirely on our core business operations."</p>
-                    <p class="testimonial-author">— Mike Thompson, Facility Manager</p>
+                    <p class="testimonial-text">"Their technical expertise in coordinating multiple service lines has been transformative for our campus maintenance operations."</p>
+                    <p class="testimonial-author">— Facility Manager, University Complex</p>
                 </div>
             </div>
         </div>
@@ -683,48 +732,48 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Get In Touch</h2>
+            <h2>Strategic Partnership</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><strong>Email:</strong> info@urbangridsolutions.com</p>
-                    <p><strong>Phone:</strong> (281) 555-0123</p>
-                    <p><strong>Service Areas:</strong> Houston, New Caney, Conroe, and surrounding areas</p>
+                    <h3>Corporate Office</h3>
+                    <p><strong>Email:</strong> operations@truealignsolutions.com</p>
+                    <p><strong>Phone:</strong> (713) 555-0189</p>
+                    <p><strong>Service Regions:</strong> Texas Gulf Coast • Southwest US • National Contracts</p>
                     
-                    <h3 style="margin-top: 3rem;">Business Hours</h3>
-                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p>Saturday: 9:00 AM - 4:00 PM</p>
-                    <p>Emergency Services: 24/7</p>
+                    <h3 style="margin-top: 3rem;">Operational Hours</h3>
+                    <p>24/7 Support Center</p>
+                    <p>Field Operations: 5:00 AM - 11:00 PM</p>
+                    <p>Emergency Response: 24/7/365</p>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
+                        <label for="name">Facility Manager</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="email">Corporate Email</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="company">Company Name</label>
+                        <label for="company">Organization</label>
                         <input type="text" id="company" name="company">
                     </div>
                     <div class="form-group">
-                        <label for="service">Service Needed</label>
+                        <label for="service">Service Requirements</label>
                         <select id="service" name="service">
-                            <option>Office Cleaning</option>
-                            <option>Medical Facility Cleaning</option>
-                            <option>Gym Sanitation</option>
-                            <option>Post-Construction Cleanup</option>
-                            <option>Floor Care</option>
-                            <option>Custom Quote</option>
+                            <option>Multi-Service Contract</option>
+                            <option>Pressure Washing</option>
+                            <option>HVAC Maintenance</option>
+                            <option>Industrial Cleaning</option>
+                            <option>Preventive Maintenance</option>
+                            <option>Custom Solution</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your cleaning needs..."></textarea>
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Describe your facility needs..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">Submit Proposal Request</button>
                 </form>
             </div>
         </div>
@@ -733,34 +782,36 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>UrbanGrid Services</h4>
-                <p>Precision-Cleaned. Professionally Managed.</p>
+                <h4>TA Solutions</h4>
+                <p>Strategic Facility Management</p>
+                <p>ISO 9001 Certified</p>
+                <p>OSHA Compliant</p>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#about">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-                <a href="#">Privacy Policy</a>
+                <h4>Solutions</h4>
+                <a href="#services">Industrial Maintenance</a>
+                <a href="#services">Pressure Washing</a>
+                <a href="#services">HVAC Systems</a>
+                <a href="#services">Compliance Management</a>
             </div>
             <div class="footer-section">
-                <h4>Services</h4>
-                <a href="#">Office Cleaning</a>
-                <a href="#">Medical Facilities</a>
-                <a href="#">Floor Care</a>
-                <a href="#">Emergency Services</a>
+                <h4>Resources</h4>
+                <a href="#">Safety Protocols</a>
+                <a href="#">Certifications</a>
+                <a href="#">Case Studies</a>
+                <a href="#">Service Areas</a>
             </div>
             <div class="footer-section">
-                <h4>Connect With Us</h4>
+                <h4>Connect</h4>
                 <div class="social-icons">
                     <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Instagram">ig</a>
-                    <a href="#" title="Facebook">fb</a>
+                    <a href="#" title="Industry Forum">IF</a>
+                    <a href="#" title="Client Portal">CP</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 UrbanGrid Services. All rights reserved.</p>
+            <p>&copy; 2025 TrueAlign Solutions. All rights reserved. | Operational Excellence Framework v3.2</p>
         </div>
     </footer>
 
@@ -782,7 +833,7 @@
         // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            alert('Thank you for your request. Our operations team will contact you within 2 business hours.');
         });
 
         // Intersection Observer for fade-in animations
