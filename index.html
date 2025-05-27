@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueAlign Solutions - Comprehensive Facility Management</title>
+    <title>TrueAlign - Your Single Point of Contact for Facility Services</title>
+    <!-- Add EmailJS library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -14,23 +16,56 @@
         :root {
             --primary-bg: #0f0f0f;
             --secondary-bg: #1a1a1a;
-            --accent-color: #2563eb;
+            --accent-color: #25c0eb;
             --text-primary: #ffffff;
             --text-secondary: #a1a1aa;
             --text-muted: #71717a;
             --border-color: #27272a;
             --hover-bg: #262626;
+            --success-color: #10b981;
+            --error-color: #ef4444;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-primary);
             line-height: 1.6;
             font-weight: 300;
         }
 
-        /* Updated Logo Styles */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfAZ9hiA.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2') format('woff2');
+        }
+
         .logo {
             display: flex;
             align-items: center;
@@ -43,14 +78,12 @@
             color: var(--text-primary);
         }
 
-        .logo-mark {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(45deg, var(--accent-color) 30%, #1e40af);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        .logo-svg {
+            width: 45px;
+            height: 45px;
+            margin-right: 0.5rem;
         }
 
-        /* Subtle Grid Background */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -64,7 +97,6 @@
             z-index: -1;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -104,7 +136,6 @@
             color: var(--text-primary);
         }
 
-        /* Sections */
         section {
             min-height: 100vh;
             padding: 6rem 3rem;
@@ -119,7 +150,6 @@
             margin: 0 auto;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             background: var(--primary-bg);
@@ -127,7 +157,7 @@
 
         .hero h1 {
             font-size: 4.5rem;
-            font-weight: 200;
+            font-weight: 300;
             margin-bottom: 1.5rem;
             color: var(--text-primary);
             letter-spacing: -0.05em;
@@ -148,6 +178,7 @@
             margin: 0 auto 4rem;
             color: var(--text-muted);
             font-weight: 300;
+            line-height: 1.7;
         }
 
         .cta-button {
@@ -169,74 +200,6 @@
             border-color: var(--text-secondary);
         }
 
-        /* About Section */
-        .about {
-            background: var(--secondary-bg);
-            text-align: center;
-        }
-        /* Updated Founders Image Styles */
-.founders-image {
-    margin: 3rem auto;
-    max-width: 800px;
-    height: 500px; /* Increased height */
-    border: 1px solid var(--border-color);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--primary-bg);
-    overflow: hidden;
-}
-
-.founders-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Preserves whole image */
-    object-position: center top; /* Aligns heads at top */
-}
-
-
-
-        .founders {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 4rem;
-            margin-top: 4rem;
-        }
-
-        .founder-card {
-            background: var(--primary-bg);
-            padding: 3rem;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .founder-card:hover {
-            border-color: var(--text-muted);
-        }
-
-        .founder-name {
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
-
-        .founder-title {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-            font-size: 0.95rem;
-        }
-
-        .founder-card p:last-child {
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        /* Services Section */
         .services {
             background: var(--primary-bg);
             text-align: center;
@@ -283,7 +246,6 @@
             font-weight: 300;
         }
 
-        /* Why Choose Us */
         .why-choose {
             background: var(--secondary-bg);
             text-align: center;
@@ -329,7 +291,6 @@
             line-height: 1.7;
         }
 
-        /* Testimonials */
         .testimonials {
             background: var(--primary-bg);
             text-align: center;
@@ -376,9 +337,67 @@
             font-size: 0.9rem;
         }
 
-        /* Contact Section */
-        .contact {
+        .about {
             background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .founders {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .founder-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: left;
+            height: 100%;
+        }
+
+        .founder-image-container {
+            height: 350px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .founder-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+        }
+
+        .founder-card:hover .founder-image-container img {
+            transform: scale(1.03);
+        }
+
+        .founder-info {
+            padding: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .founder-name {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .founder-title {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .contact {
+            background: var(--primary-bg);
         }
 
         .contact h2 {
@@ -415,9 +434,10 @@
         }
 
         .contact-form {
-            background: var(--primary-bg);
+            background: var(--secondary-bg);
             padding: 3rem;
             border: 1px solid var(--border-color);
+            position: relative;
         }
 
         .form-group {
@@ -462,6 +482,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            width: 100%;
         }
 
         .submit-btn:hover {
@@ -469,7 +490,34 @@
             border-color: var(--text-secondary);
         }
 
-        /* Footer */
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 2px;
+            text-align: center;
+            font-weight: 400;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+            display: block;
+        }
+
         footer {
             background: var(--primary-bg);
             padding: 4rem 3rem 2rem;
@@ -516,12 +564,13 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            border: none;
         }
 
         .social-icons a {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border: none;
             color: var(--text-secondary);
             display: flex;
             align-items: center;
@@ -532,8 +581,7 @@
         }
 
         .social-icons a:hover {
-            border-color: var(--text-secondary);
-            color: var(--text-primary);
+            color: var(--accent-color);
         }
 
         .footer-bottom {
@@ -543,14 +591,19 @@
             font-size: 0.85rem;
             font-weight: 300;
         }
-        .logo-svg {
-            width: 45px;
-            height: 45px;
-            margin-right: 0.5rem;
-            
+
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--accent-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2px;
+            margin-top: 2rem;
+            font-size: 0.9rem;
         }
-       
-        /* Responsive Design */
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 3rem;
@@ -581,21 +634,15 @@
                 font-size: 2rem !important;
             }
 
-            .founders-image {
-                height: 300px;
-                margin: 2rem auto;
-
+            .founder-image-container {
+                height: 250px;
             }
-            
-
         }
 
-        /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Subtle animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -613,78 +660,69 @@
     
     <nav id="navbar">
         <div class="nav-container">
-         <a href="#" class="logo">
-    <img src="Solutions.svg" alt="TA Solutions Logo" class="logo-svg">
-
-</a>
+            <a href="#" class="logo">
+                <img src="Solutions.svg" alt="TrueAlign Logo" class="logo-svg">
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">Leadership</a></li>
-                <li><a href="#services">Solutions</a></li>
-                <li><a href="#why-choose">Our Edge</a></li>
-                <li><a href="#testimonials">Results</a></li>
-                <li><a href="#contact">Connect</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-choose">Why Choose Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container">
-            <h1>TrueAlign Solutions</h1>
-            <p class="tagline">Strategic Facility Management Solutions</p>
-            <p class="intro">Comprehensive maintenance and operational services for commercial facilities, combining technical expertise with systematic management.</p>
-            <a href="#contact" class="cta-button">Request Proposal</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>Executive Leadership</h2>
-             <div class="founders-image">
-    <img src="founders.png" alt="TrueAlign Solutions Founders" style="object-fit: contain; width: 100%; height: 100%;">
-</div>
-            <div class="founders">
-                <div class="founder-card fade-in">
-                    <h3 class="founder-name">Fernando Erazo</h3>
-                    <p class="founder-title">Co-Founder & Systems Architect</p>
-                    <p>Leading the development of integrated service platforms and operational frameworks for complex facility environments.</p>
-                </div>
-                <div class="founder-card fade-in">
-                    <h3 class="founder-name">Johnny Colina</h3>
-                    <p class="founder-title">Co-Founder & Field Operations Director</p>
-                    <p>Overseeing cross-disciplinary service teams and implementing quality assurance protocols for complex facility environments.</p>
-                </div>
+            <h1>True Align Solutions</h1>
+            <p class="tagline">Your Trusted Partner for Facility Services</p>
+            <p class="intro">We connect businesses with top tier contractors for all facility needs. Our rigorous vetting process and performance guarantees ensure you always get exceptional service.</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+            <div class="guarantee-badge fade-in">
+                <span>✓</span> Satisfaction Guaranteed or We'll Find You a Better Provider
             </div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="container">
-            <h2>Integrated Solutions</h2>
+            <h2>Our Services</h2>
+            <p class="intro" style="max-width: 800px; margin-bottom: 4rem;">We specialize in connecting you with the best providers for these essential business services:</p>
+            
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <h3>Industrial Cleaning</h3>
-                    <p>Specialized maintenance for manufacturing plants and warehouses</p>
+                    <h3>Commercial Cleaning</h3>
+                    <p>Daily office cleaning, deep cleaning, and specialized sanitation services</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Pressure Washing</h3>
-                    <p>High-pressure surface cleaning for exteriors and equipment</p>
+                    <h3>Power Washing</h3>
+                    <p>Building exteriors, sidewalks, parking lots, and industrial equipment</p>
                 </div>
                 <div class="service-card fade-in">
                     <h3>HVAC Maintenance</h3>
-                    <p>Ventilation system servicing and air quality management</p>
+                    <p>Regular servicing, filter changes, and emergency repairs</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Floor Care Systems</h3>
-                    <p>Advanced surface treatments and protective coatings</p>
+                    <h3>Landscaping</h3>
+                    <p>Grounds maintenance, seasonal care, and snow removal</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Construction Cleanup</h3>
-                    <p>Post-project site remediation and safety preparation</p>
+                    <h3>Janitorial Services</h3>
+                    <p>Comprehensive restroom care and supply management</p>
                 </div>
                 <div class="service-card fade-in">
-                    <h3>Landscape Management</h3>
-                    <p>Commercial grounds maintenance and seasonal care</p>
+                    <h3>Waste Management</h3>
+                    <p>Recycling programs, dumpster services, and hazardous waste removal</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Pest Control</h3>
+                    <p>Regular treatments and emergency response for commercial properties</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>Window & Glass Cleaning</h3>
+                    <p>Interior and exterior window cleaning for storefronts, offices, and multi-story buildings</p>
                 </div>
             </div>
         </div>
@@ -692,23 +730,33 @@
 
     <section id="why-choose" class="why-choose">
         <div class="container">
-            <h2>Operational Advantages</h2>
+            <h2>Why Businesses Choose TrueAlign</h2>
+            <p class="intro" style="max-width: 800px; margin-bottom: 4rem;">We're more than just a middleman , we're your advocate in finding and maintaining the best service relationships.</p>
+            
             <div class="features-grid">
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Cross-Service Integration</h3>
-                    <p>Unified management platform coordinating multiple service lines through centralized oversight.</p>
+                    <h3 class="feature-title">Vetted Contractors</h3>
+                    <p>Every provider in our network undergoes rigorous background checks, license verification, and quality assessments.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Preventive Maintenance</h3>
-                    <p>Data-driven scheduling to prevent equipment failure and maintain operational continuity.</p>
+                    <h3 class="feature-title">Performance Monitoring</h3>
+                    <p>We track every job and won't hesitate to replace underperforming contractors - no questions asked.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">Compliance Assurance</h3>
-                    <p>Full regulatory compliance tracking for industry-specific maintenance requirements.</p>
+                    <h3 class="feature-title">One Point of Contact</h3>
+                    <p>Stop managing multiple vendors. We handle all coordination and communication for you.</p>
                 </div>
                 <div class="feature-card fade-in">
-                    <h3 class="feature-title">24/7 Monitoring</h3>
-                    <p>Real-time operational tracking with automated alert systems for immediate response.</p>
+                    <h3 class="feature-title">Cost Transparency</h3>
+                    <p>No hidden fees or surprise charges. You'll always know exactly what you're paying for.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Customized Service Plans</h3>
+                    <p>We tailor every service schedule to match your business hours, traffic levels, and operational needs — ensuring minimal disruption and maximum efficiency.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3 class="feature-title">Relationship-Driven Support</h3>
+                    <p>You're not just another account. We build long-term partnerships by providing responsive, human support and proactively checking in to make sure you're always satisfied.</p>
                 </div>
             </div>
         </div>
@@ -716,64 +764,120 @@
 
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2>Client Outcomes</h2>
+            <h2>What Our Clients Say</h2>
+            <p class="intro" style="max-width: 800px; margin-bottom: 4rem;">Don't just take our word for it - hear from businesses who've experienced the TrueAlign difference.</p>
+            
             <div class="testimonial-carousel">
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"TrueAlign's integrated approach reduced our facility maintenance costs by 40% while improving service quality across all locations."</p>
-                    <p class="testimonial-author">— Operations Director, Manufacturing Group</p>
+                    <p class="testimonial-text">"After years of disappointing cleaners, TrueAlign found us a perfect match in just one week. When we had one minor issue, they had a new team in place the next day - no hassle on our part."</p>
+                    <p class="testimonial-author">— Sarah K., Office Manager (Retail Chain)</p>
                 </div>
                 <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Their technical expertise in coordinating multiple service lines has been transformative for our campus maintenance operations."</p>
-                    <p class="testimonial-author">— Facility Manager, University Complex</p>
+                    <p class="testimonial-text">"What sets TrueAlign apart is their commitment to the relationship. They don't just make an introduction - they actively manage the partnership and step in immediately if anything isn't perfect."</p>
+                    <p class="testimonial-author">— Michael T., Facility Director (Corporate Campus)</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Meet the Team</h2>
+            <p class="intro" style="max-width: 800px; margin-bottom: 2rem;">
+                At TrueAlign, you’re not dealing with a faceless platform. You’re working directly with the people who built it. We stay hands on with every client and every project — because we believe the best results come from real relationships, not automated handoffs.
+
+From the first call to ongoing support, we’re here to make sure your facility services run smoothly — and to step in when they don’t.
+
+            </p>
+            
+            <div class="founders">
+                <div class="founder-card fade-in">
+                    <div class="founder-image-container">
+                        <img src="fernando.png" alt="Fernando Erazo, Co-Founder">
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Fernando Erazo</h3>
+                        <p class="founder-title">Co-Founder & Director of Technology & Strategy</p>
+                        <p>"We built TrueAlign to make facility service management effortless. From automation to oversight, everything is designed to give businesses one point of contact and complete confidence that the job gets done right — every time."</p>
+                
+                    </div>
+                </div>
+                
+                <div class="founder-card fade-in">
+                    <div class="founder-image-container">
+                        <img src="johnny.png" alt="Johnny Colina, Co-Founder">
+                    </div>
+                    <div class="founder-info">
+                        <h3 class="founder-name">Johnny Colina</h3>
+                        <p class="founder-title">Co-Founder & Director of Field Operations</p>
+                        <p>"At TrueAlign, we go beyond referrals. We actively manage your service providers and resolve any issues fast — because you shouldn't have to micromanage what should already be handled."</p>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guarantee-badge fade-in" style="margin-top: 4rem;">
+                <span>✓</span> One Call Covers All Your Facility Needs
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Strategic Partnership</h2>
+            <h2>Let's Find Your Perfect Match</h2>
+            <p class="intro" style="max-width: 800px; margin-bottom: 4rem; text-align: center;">Tell us about your needs, and we'll connect you with the right service providers within 48 hours.</p>
+            
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Corporate Office</h3>
-                    <p><strong>Email:</strong> operations@truealignsolutions.com</p>
-                    <p><strong>Phone:</strong> (713) 555-0189</p>
-                    <p><strong>Service Regions:</strong> Texas Gulf Coast • Southwest US • National Contracts</p>
+                    <h3>Get In Touch</h3>
+                    <p><strong>Email:</strong> hello@truealign.com</p>
+                    <p><strong>Phone:</strong> (832) 432-4489</p>
+                    <p><strong>Service Areas:</strong> Houston and surrounding regions</p>
                     
-                    <h3 style="margin-top: 3rem;">Operational Hours</h3>
-                    <p>24/7 Support Center</p>
-                    <p>Field Operations: 5:00 AM - 11:00 PM</p>
-                    <p>Emergency Response: 24/7/365</p>
+                    <h3 style="margin-top: 3rem;">Our Commitment</h3>
+                    <p>• 48 hour response guarantee</p>
+                    <p>• No obligation consultations</p>
+                    <p>• Transparent pricing</p>
+                    <p>• Satisfaction guarantee</p>
                 </div>
-                <form class="contact-form">
+                <form id="contactForm" class="contact-form">
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
+                    
                     <div class="form-group">
-                        <label for="name">Facility Manager</label>
+                        <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Corporate Email</label>
+                        <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="company">Organization</label>
+                        <label for="company">Business Name</label>
                         <input type="text" id="company" name="company">
                     </div>
                     <div class="form-group">
-                        <label for="service">Service Requirements</label>
-                        <select id="service" name="service">
-                            <option>Multi-Service Contract</option>
-                            <option>Pressure Washing</option>
-                            <option>HVAC Maintenance</option>
-                            <option>Industrial Cleaning</option>
-                            <option>Preventive Maintenance</option>
-                            <option>Custom Solution</option>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Services Needed</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="Commercial Cleaning">Commercial Cleaning</option>
+                            <option value="Power Washing">Power Washing</option>
+                            <option value="HVAC Maintenance">HVAC Maintenance</option>
+                            <option value="Landscaping">Landscaping</option>
+                            <option value="Janitorial Services">Janitorial Services</option>
+                            <option value="Waste Management">Waste Management</option>
+                            <option value="Pest Control">Pest Control</option>
+                            <option value="Multiple Services">Multiple Services</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Project Details</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Describe your facility needs..."></textarea>
+                        <label for="message">Tell Us About Your Needs</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Size of facility, frequency needed, special requirements..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Submit Proposal Request</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">Find My Provider</button>
                 </form>
             </div>
         </div>
@@ -782,40 +886,45 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>TA Solutions</h4>
-                <p>Strategic Facility Management</p>
-                <p>ISO 9001 Certified</p>
-                <p>OSHA Compliant</p>
+                <h4>TrueAlign</h4>
+                <p>Client-first approach.</p>
+                <p>Quality guaranteed.</p>
             </div>
             <div class="footer-section">
-                <h4>Solutions</h4>
-                <a href="#services">Industrial Maintenance</a>
-                <a href="#services">Pressure Washing</a>
-                <a href="#services">HVAC Systems</a>
-                <a href="#services">Compliance Management</a>
+                <h4>Services</h4>
+                <a href="#services">Commercial Cleaning</a>
+                <a href="#services">Power Washing</a>
+                <a href="#services">HVAC Maintenance</a>
+                <a href="#services">Landscaping</a>
+                <a href="#services">Janitorial Services</a>
             </div>
             <div class="footer-section">
-                <h4>Resources</h4>
-                <a href="#">Safety Protocols</a>
-                <a href="#">Certifications</a>
-                <a href="#">Case Studies</a>
-                <a href="#">Service Areas</a>
+                <h4>Company</h4>
+                <a href="#about">Our Story</a>
+                <a href="#why-choose">Our Promise</a>
+                <a href="#testimonials">Case Studies</a>
             </div>
             <div class="footer-section">
                 <h4>Connect</h4>
+                <p>Ready to find your perfect service match?</p>
                 <div class="social-icons">
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Industry Forum">IF</a>
-                    <a href="#" title="Client Portal">CP</a>
+                    <a href="#" title="LinkedIn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path></svg></a>
+                    <a href="#" title="Facebook"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"></path></svg></a>
+                    <a href="#" title="Instagram"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 TrueAlign Solutions. All rights reserved. | Operational Excellence Framework v3.2</p>
+            <p>&copy; 2023 TrueAlign. All rights reserved. | Truly aligning businesses with exceptional service providers.</p>
         </div>
     </footer>
 
     <script>
+        // Initialize EmailJS with your User ID
+        (function() {
+            emailjs.init('YOUR_EMAILJS_USER_ID'); // Replace with your actual EmailJS user ID
+        })();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -830,10 +939,57 @@
             });
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        // Form submission with EmailJS
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your request. Our operations team will contact you within 2 business hours.');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Send email using EmailJS
+            emailjs.send('service_q4fg33k', 'template_z2kosxp', data)
+                .then(function(response) {
+                    // Success message
+                    formMessage.textContent = 'Thank you! We received your request and will contact you within 48 hours.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    contactForm.reset();
+                }, function(error) {
+                    // Show error message
+                    formMessage.textContent = 'Error: Failed to send message. Please try again or call us directly.';
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                    
+                    // Scroll to message
+                    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .finally(() => {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Find My Provider';
+                    
+                    // Hide message after 10 seconds
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 10000);
+                });
+        });
+
+        // Form validation
+        contactForm.addEventListener('input', function() {
+            const isValid = contactForm.checkValidity();
+            submitBtn.disabled = !isValid;
         });
 
         // Intersection Observer for fade-in animations
@@ -853,6 +1009,18 @@
         // Observe fade-in elements
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '1rem 0';
+                navbar.style.backgroundColor = 'rgba(15, 15, 15, 0.98)';
+            } else {
+                navbar.style.padding = '1.5rem 0';
+                navbar.style.backgroundColor = 'rgba(15, 15, 15, 0.95)';
+            }
         });
     </script>
 </body>
